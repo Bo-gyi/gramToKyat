@@ -42,32 +42,66 @@ body {
 }
 
 .calculator {
-    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.3);
-    border-radius: 0.5em;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+
 }
 
-.calculator__display {
+.display {
+    display: flex;
+    justify-content: space-between;
     background-color: var(--grey-900);
     color: var(--grey-050);
-    width: min(16.25rem, 100vw);
+    width: 100vw;
     padding: 0.75rem 1rem;
     text-align: right;
     font-size: calc(1rem * 1.2 * 1.2);
 
 }
 
+.to {
+    text-align: center;
+    font-style: italic;
+    background-color: var(--grey-200);
+}
+
+.display_label {
+    color: var(--grey-300);
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.kpy_label_container {
+    display: flex;
+}
+
+.kpl_label {
+    font-size: .7rem;
+}
+
 .calculator__keys {
+    width: 16rem;
     background-color: var(--grey-400);
     display: grid;
     gap: 2px;
     grid-template-columns: repeat(3, auto);
     grid-template-areas:
+        "switch switch switch"
         "seven eight nine"
         "four five six"
         "one two three"
         "clear zero decimal"
     ;
+
+}
+
+.round-border {
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 0.5em;
+    overflow: hidden;
 }
 
 .calculator__keys>button {
@@ -127,4 +161,29 @@ body {
 
 .clear {
     grid-area: clear;
+}
+
+.category {
+    grid-area: switch;
+    border: none;
+    background-color: var(--grey-300);
+    display: grid;
+    padding: 0;
+    grid-template-columns: repeat(5, auto);
+}
+
+
+
+.category__key+.category__key {
+    margin-left: 2px;
+}
+
+.category__key {
+    background-color: var(--grey-200);
+    font-size: .75rem;
+    border: none;
+}
+
+.selected {
+    background-color: var(--orange-200);
 }
