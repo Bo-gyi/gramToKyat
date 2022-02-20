@@ -6,11 +6,38 @@ const ywayDisplay = calculator.querySelector(".yway_display")
 const priceDisplay = calculator.querySelector(".price_display")
 const resultDisplay = calculator.querySelector(".result_display")
 const keys = calculator.querySelector(".calculator__keys")
-const fieldSet = calculator.querySelector(".category")
-const catKeys = fieldSet.querySelectorAll(".category__key")
 
+const displays = calculator.querySelector(".display-container");
+const subDisplays = displays.querySelectorAll(".display-group")
 //format number
 const numberFormat = new Intl.NumberFormat("en-US")
+
+displays.addEventListener("click", (event) => {
+    const clickedElement = event.target
+    if (clickedElement === displays) return // if it lands on the gap, return
+    const category = clickedElement.dataset.category
+    if (category) {
+        // for programming logic
+        if (calculator.dataset.category === category) {
+            calculator.dataset.newState = "false"
+        } else {
+            calculator.dataset.category = category
+            calculator.dataset.newState = "true"
+        }
+
+
+        // for visual effects
+        subDisplays.forEach((display) => {
+            display.classList.remove("selected")
+        })
+        if (clickedElement.matches(".display-group")) {
+            clickedElement.classList.add("selected")
+        } else {
+            clickedElement.closest(".display-group").classList.add("selected")
+        }
+    }
+
+})
 
 keys.addEventListener("click", (event) => {
 
@@ -19,22 +46,10 @@ keys.addEventListener("click", (event) => {
     const key = event.target
     const type = key.dataset.type;
     const category = calculator.dataset.category
+    const newState = calculator.dataset.newState
     const keyValue = key.dataset.value
 
-    // change category according to selected keys
-    if (type === "category") {
-        //to make sure each category is pressed for only one time
-        catKeys.forEach((key) => {
-            key.disabled = false
-            key.classList.remove("selected")
-        })
-        key.disabled = true
-        key.classList.add("selected")
 
-
-        const currentCategory = keyValue;
-        calculator.dataset.category = currentCategory
-    }
 
     if (category === "gram") {
         if (type === "number") {
@@ -46,7 +61,8 @@ keys.addEventListener("click", (event) => {
                     return
                 }
             }
-            if (gramText === "0") {
+            if (gramText === "0" || isNewState()) {
+                changeState()
                 const gramValue = keyValue
                 gramDisplay.textContent = gramValue
 
@@ -68,7 +84,8 @@ keys.addEventListener("click", (event) => {
             // no decimal price
             if (keyValue === ".") return
 
-            if (priceText === "0") {
+            if (priceText === "0" || isNewState()) {
+                changeState()
                 const priceValue = keyValue
                 priceDisplay.textContent = priceValue
             } else {
@@ -89,7 +106,8 @@ keys.addEventListener("click", (event) => {
                     return
                 }
             }
-            if (ywayText === "0") {
+            if (ywayText === "0" || isNewState()) {
+                changeState()
                 const ywayValue = keyValue
                 ywayDisplay.textContent = ywayValue
             } else {
@@ -105,7 +123,8 @@ keys.addEventListener("click", (event) => {
             const pelText = pelDisplay.textContent
             if (keyValue === ".") return
 
-            if (pelText === "0") {
+            if (pelText === "0" || isNewState()) {
+                changeState()
                 const pelValue = keyValue
                 pelDisplay.textContent = pelValue
             } else {
@@ -121,7 +140,8 @@ keys.addEventListener("click", (event) => {
             const kyatText = kyatDisplay.textContent
             if (keyValue === ".") return
 
-            if (kyatText === "0") {
+            if (kyatText === "0" || isNewState()) {
+                changeState()
                 const kyatValue = keyValue
                 kyatDisplay.textContent = kyatValue
             } else {
@@ -169,4 +189,12 @@ function calculateAndUpdate() {
     const result = (kyat + (pel / 16) + (yway / 128)) * price
     const roundedResult = Math.round(result / 100) * 100
     resultDisplay.textContent = numberFormat.format(roundedResult)
+}
+
+function isNewState() {
+    return calculator.dataset.newState === "true"
+}
+
+function changeState() {
+    calculator.dataset.newState = "false"
 }

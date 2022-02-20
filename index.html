@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Calculator</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet" />
     <link rel="stylesheet" href="css/reset.css">
@@ -15,31 +15,28 @@
 <body>
     <div class="calculator" data-category="gram">
         <div class="display-container">
-            <div class="display display_gram round-border">
-                <div class="display_label">gram</div>
-                <div class="gram_display">0</div>
+            <div class="display display-group round-border selected" data-category="gram">
+                <div class="display_label" data-category="gram">gram</div>
+                <div class="gram_display" data-category="gram">0</div>
             </div>
-            <!-- <div class="to">to</div> -->
-            <div class="display display_kyat round-border">
-                <div class="kpy_label_container">
-                    <div class="kyat_display">0</div>
-                    <div class="display_label kpl_label">Kyat</div>
-                </div>
-                <div class="kpy_label_container">
-                    <div class="pel_display">0</div>
-                    <div class="display_label kpl_label">Pel</div>
-                </div>
-                <div class="kpy_label_container">
-                    <div class="yway_display">0</div>
-                    <div class="display_label kpl_label">Yway</div>
-                </div>
 
-
-
+            <div id="display_kyat" class="display display_kyat round-border">
+                <div class="kpy_label_container display-group" data-category="kyat">
+                    <div class="kyat_display" data-category="kyat">0</div>
+                    <div class="display_label kpl_label" data-category="kyat">Kyat</div>
+                </div>
+                <div class="kpy_label_container display-group" data-category="pel">
+                    <div class="pel_display" data-category="pel">0</div>
+                    <div class="display_label kpl_label" data-category="pel">Pel</div>
+                </div>
+                <div class="kpy_label_container display-group" data-category="yway">
+                    <div class="yway_display" data-category="yway">0</div>
+                    <div class="display_label kpl_label" data-category="yway">Yway</div>
+                </div>
             </div>
-            <div class="display display_price round-border">
-                <div class="display_label">Price</div>
-                <div class="price_display">0</div>
+            <div class="display display-group round-border" data-category="price">
+                <div class="display_label" data-category="price">Price</div>
+                <div class="price_display" data-category="price">0</div>
             </div>
             <div class="display display_result round-border">
                 <div class="display_label">Result</div>
@@ -51,13 +48,6 @@
 
 
         <div class="calculator__keys round-border">
-            <fieldset class="category">
-                <button class="category__key kyat" data-type="category" data-value="kyat">K</button>
-                <button class="category__key pel" data-type="category" data-value="pel">P</button>
-                <button class="category__key yway" data-type="category" data-value="yway">Y</button>
-                <button class="category__key price" data-type="category" data-value="price">Price</button>
-                <button class="category__key price selected" data-type="category" data-value="gram">Gram</button>
-            </fieldset>
 
             <button class="key one" data-type="number" data-value="1">1</button>
             <button class="key two" data-type="number" data-value="2">2</button>

@@ -53,19 +53,18 @@ body {
 .display {
     display: flex;
     justify-content: space-between;
+
     background-color: var(--grey-900);
     color: var(--grey-050);
     width: 100vw;
     padding: 0.75rem 1rem;
     text-align: right;
     font-size: calc(1rem * 1.2 * 1.2);
-
 }
 
-.to {
-    text-align: center;
-    font-style: italic;
-    background-color: var(--grey-200);
+/* remove padding to expand the clickable area of its children */
+#display_kyat {
+    padding: 0;
 }
 
 .display_label {
@@ -76,6 +75,8 @@ body {
 
 .kpy_label_container {
     display: flex;
+    padding: 0.75rem 1rem;
+    flex: 1 1 0;
 }
 
 .kpl_label {
@@ -163,26 +164,6 @@ body {
     grid-area: clear;
 }
 
-.category {
-    grid-area: switch;
-    border: none;
-    background-color: var(--grey-300);
-    display: grid;
-    padding: 0;
-    grid-template-columns: repeat(5, auto);
-}
-
-
-
-.category__key+.category__key {
-    margin-left: 2px;
-}
-
-.category__key {
-    background-color: var(--grey-200);
-    font-size: .75rem;
-    border: none;
-}
 
 .selected {
     background-color: var(--orange-200);
