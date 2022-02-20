@@ -14,53 +14,59 @@
 
 <body>
     <div class="calculator" data-category="gram">
-        <div class="display-container">
-            <div class="display display-group round-border selected" data-category="gram">
-                <div class="display_label" data-category="gram">gram</div>
-                <div class="gram_display" data-category="gram">0</div>
-            </div>
-
-            <div id="display_kyat" class="display display_kyat round-border">
-                <div class="kpy_label_container display-group" data-category="kyat">
-                    <div class="kyat_display" data-category="kyat">0</div>
-                    <div class="display_label kpl_label" data-category="kyat">Kyat</div>
-                </div>
-                <div class="kpy_label_container display-group" data-category="pel">
-                    <div class="pel_display" data-category="pel">0</div>
-                    <div class="display_label kpl_label" data-category="pel">Pel</div>
-                </div>
-                <div class="kpy_label_container display-group" data-category="yway">
-                    <div class="yway_display" data-category="yway">0</div>
-                    <div class="display_label kpl_label" data-category="yway">Yway</div>
-                </div>
-            </div>
-            <div class="display display-group round-border" data-category="price">
-                <div class="display_label" data-category="price">Price</div>
-                <div class="price_display" data-category="price" data-value="0">0</div>
-            </div>
-            <div class="display display_result round-border">
-                <div class="display_label">Result</div>
-                <div class="result_display">0</div>
-            </div>
-
-
+        <div class="display display_result round-border">
+            <div class="display_label">Result</div>
+            <div class="result_display">0</div>
         </div>
 
+        <div class="container">
 
-        <div class="calculator__keys round-border">
 
-            <button class="key one" data-type="number" data-value="1">1</button>
-            <button class="key two" data-type="number" data-value="2">2</button>
-            <button class="key three" data-type="number" data-value="3">3</button>
-            <button class="key four" data-type="number" data-value="4">4</button>
-            <button class="key five" data-type="number" data-value="5">5</button>
-            <button class="key six" data-type="number" data-value="6">6</button>
-            <button class="key seven" data-type="number" data-value="7">7</button>
-            <button class="key eight" data-type="number" data-value="8">8</button>
-            <button class="key nine" data-type="number" data-value="9">9</button>
-            <button class="key zero" data-type="number" data-value="0">0</button>
-            <button class="key decimal" data-type="number" data-value=".">.</button>
-            <button class="key clear" data-type="clear">C</button>
+            <div class="display-container round-border">
+                <div class="display display-group selected" data-category="gram">
+                    <div class="display_label" data-category="gram">gram</div>
+                    <div class="gram_display" data-category="gram">0</div>
+                </div>
+
+                <div id="display_kyat" class="display display_kyat">
+                    <div class="kpy_label_container display-group" data-category="kyat">
+                        <div class="kyat_display" data-category="kyat">0</div>
+                        <div class="display_label kpl_label" data-category="kyat">Kyat</div>
+                    </div>
+                    <div class="kpy_label_container display-group" data-category="pel">
+                        <div class="pel_display" data-category="pel">0</div>
+                        <div class="display_label kpl_label" data-category="pel">Pel</div>
+                    </div>
+                    <div class="kpy_label_container display-group" data-category="yway">
+                        <div class="yway_display" data-category="yway">0</div>
+                        <div class="display_label kpl_label" data-category="yway">Yway</div>
+                    </div>
+                </div>
+                <div class="display display-group" data-category="price">
+                    <div class="display_label" data-category="price">Price</div>
+                    <div class="price_display" data-category="price" data-value="0">0</div>
+                </div>
+
+
+
+            </div>
+
+
+            <div class="calculator__keys round-border">
+
+                <button class="key one" data-type="number" data-value="1">1</button>
+                <button class="key two" data-type="number" data-value="2">2</button>
+                <button class="key three" data-type="number" data-value="3">3</button>
+                <button class="key four" data-type="number" data-value="4">4</button>
+                <button class="key five" data-type="number" data-value="5">5</button>
+                <button class="key six" data-type="number" data-value="6">6</button>
+                <button class="key seven" data-type="number" data-value="7">7</button>
+                <button class="key eight" data-type="number" data-value="8">8</button>
+                <button class="key nine" data-type="number" data-value="9">9</button>
+                <button class="key zero" data-type="number" data-value="0">0</button>
+                <button class="key decimal" data-type="number" data-value=".">.</button>
+                <button class="key clear" data-type="clear">C</button>
+            </div>
         </div>
 
     </div>
