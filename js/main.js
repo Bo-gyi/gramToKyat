@@ -6,6 +6,7 @@ const ywayDisplay = calculator.querySelector(".yway_display")
 const priceDisplay = calculator.querySelector(".price_display")
 const resultDisplay = calculator.querySelector(".result_display")
 const keys = calculator.querySelector(".calculator__keys")
+const decimalKey = keys.querySelector(".decimal")
 
 const displays = calculator.querySelector(".display-container");
 const subDisplays = displays.querySelectorAll(".display-group")
@@ -34,6 +35,13 @@ displays.addEventListener("click", (event) => {
             clickedElement.classList.add("selected")
         } else {
             clickedElement.closest(".display-group").classList.add("selected")
+        }
+
+        //change decimal key to "000" and back
+        if (category === "price") {
+            decimalKeyToZero()
+        } else {
+            backToDecimal()
         }
     }
 
@@ -80,20 +88,27 @@ keys.addEventListener("click", (event) => {
 
     } else if (category === "price") {
         if (type === "number") {
-            const priceText = priceDisplay.textContent
-            // no decimal price
+            const priceText = priceDisplay.dataset.value
+            // no decimal in price
             if (keyValue === ".") return
+            // change decimal button to triple zero
+
 
             if (priceText === "0" || isNewState()) {
                 changeState()
                 const priceValue = keyValue
-                priceDisplay.textContent = priceValue
+
+                priceDisplay.dataset.value = priceValue
+                priceDisplay.textContent = numberFormat.format(priceValue)
             } else {
                 const priceValue = priceText + keyValue
-                // priceDisplay.textContent = numberFormat.format(priceValue)
-                priceDisplay.textContent = priceValue
+
+                priceDisplay.dataset.value = priceValue
+                priceDisplay.textContent = numberFormat.format(priceValue)
             }
+
         } else if (type === "clear") {
+            priceDisplay.dataset.value = "0"
             priceDisplay.textContent = "0"
         }
     } else if (category === "yway") {
@@ -182,7 +197,7 @@ function convertToGram() {
 
 
 function calculateAndUpdate() {
-    const price = parseInt(priceDisplay.textContent),
+    const price = parseInt(priceDisplay.dataset.value),
         kyat = parseInt(kyatDisplay.textContent),
         pel = parseInt(pelDisplay.textContent),
         yway = parseFloat(ywayDisplay.textContent);
@@ -197,4 +212,14 @@ function isNewState() {
 
 function changeState() {
     calculator.dataset.newState = "false"
+}
+
+function decimalKeyToZero() {
+    decimalKey.dataset.value = "000"
+    decimalKey.textContent = "000"
+}
+
+function backToDecimal() {
+    decimalKey.textContent = "."
+    decimalKey.dataset.value = "."
 }
