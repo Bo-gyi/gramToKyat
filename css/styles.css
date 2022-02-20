@@ -115,6 +115,9 @@ body {
 .calculator__keys>button {
     border: 0;
     background-color: var(--grey-200);
+    /* prevents zoom on double tap */
+    touch-action: manipulation;
+
 }
 
 
